@@ -17,12 +17,9 @@ $(document).ready(function() {
      */
 
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
-
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       Math.max(50, $('.dancefloor').height() * Math.random()),
       Math.max(50, $('.dancefloor').width() * Math.random()),
@@ -33,26 +30,29 @@ $(document).ready(function() {
 
 
   $('.lineup').on('click', function(event) {
-
     $.each($('.dancer'), function(index, dancer) {
       var fromTop = $(window).height() / 2.35;
       var fromLeft = 100 + (100 * index);
       $(this).css({'top': fromTop, 'left': fromLeft});
-    });
-    
+    });    
   });
+
 
   $('body').on('click', '.dancer', function(event) {
-    // $(this).keydown(function(event) {
-    //   switch (event.which) {
-    //   case 37: // left arrow
-    //     console.log('hi');
-    //     break;
-    //   }
+    // $(this).addClass('animated flip').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+    //   $(this).removeClass('animated flip');
     // });
-    console.log($(this));
-    
   });
 
-});
 
+  $('.dropdown-content').on('click', 'a', function(event) {
+    var danceMove = $(this).text();
+    $.each($('.dancer'), function(index, dancer) {
+      $(this).addClass('animated ' + danceMove).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        $(this).removeClass('animated ' + danceMove);
+      });
+    });
+  });
+
+
+});

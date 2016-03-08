@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Object Dance Party</title>
+    <link rel="stylesheet" href="animate.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="lib/jquery.js"></script>
     <script src="src/dancer.js"></script>
@@ -10,6 +11,15 @@
     <script src="src/dragonDancer.js"></script>
   </head>
   <body>
+    <div class="dropdown">
+      <button class="dropbtn">Dance Move!</button>
+      <div class="dropdown-content">
+        <a href="#">bounce</a>
+        <a href="#">swing</a>
+        <a href="#">shake</a>
+        <a href="#">flip</a>
+      </div>
+    </div>
     <div class="topbar">
       <span class="title">object dance party</span>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="makePanda">add a panda dancer</a>
