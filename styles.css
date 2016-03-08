@@ -3,13 +3,13 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-color: #444;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .lineup, .addDancerButton{
   padding:5px 12px;
   float:right;
 }
@@ -26,4 +26,15 @@ body, a:link, a:visited, a:active{
 
 .gif{
   width: 100px;
+}
+.background{
+  display: block;
+  margin: auto;
+  width: 70%;
+}
+.dancefloor{
+  background-image: url('images/dancefloor.png');
+  height: 710px;
+  width: 1125px;
+  background-repeat: no-repeat;
 }
