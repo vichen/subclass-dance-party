@@ -47,10 +47,16 @@ $(document).ready(function() {
       clicked = false;
     } else {
       $(document).bind('mousemove', function(e) {
-        dancer.css({
-          left: e.pageX,
-          top: e.pageY
+        $.each($('.dancer'), function(index, dancer) {
+          $(this).css({
+            left: e.pageX + index*100,
+            top: e.pageY + index*100
+          });
         });
+        // dancer.css({
+        //   left: e.pageX,
+        //   top: e.pageY
+        // });
       });
       clicked = true;
     }
