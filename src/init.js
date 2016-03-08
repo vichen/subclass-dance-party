@@ -37,11 +37,23 @@ $(document).ready(function() {
     });    
   });
 
+  var clicked = false;
 
   $('body').on('click', '.dancer', function(event) {
-    // $(this).addClass('animated flip').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-    //   $(this).removeClass('animated flip');
-    // });
+    var dancer = $(this);
+
+    if (clicked) {
+      $(document).unbind('mousemove');
+      clicked = false;
+    } else {
+      $(document).bind('mousemove', function(e) {
+        dancer.css({
+          left: e.pageX,
+          top: e.pageY
+        });
+      });
+      clicked = true;
+    }
   });
 
 
