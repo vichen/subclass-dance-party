@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //window.dancers = [];
+  window.dancers = [];
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -25,7 +25,10 @@ $(document).ready(function() {
       Math.max(50, $('.dancefloor').width() * Math.random()),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
+    console.log(window.dancers);
     $('.dancefloor').append(dancer.$node);
+    dancer.collide();
   });
 
 
@@ -40,11 +43,6 @@ $(document).ready(function() {
   $('body').on('mouseover', '.dancer', function(event) {
     $(this).draggable();
   });
-
-  $('body').on('mouseover', 'img', function(event) {
-    $(this).resizable();
-  });
-
 
 
   var dblClicked = false;

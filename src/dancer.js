@@ -6,6 +6,8 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   // this.left = left;
   this.timeBetweenSteps = timeBetweenSteps; 
   this.step();
+  this.top = top;
+  this.left = left;
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.setPosition(top, left);
@@ -26,4 +28,25 @@ makeDancer.prototype.setPosition = function(top, left) {
     left: left
   };
   this.$node.css(styleSettings);
+
+};
+
+makeDancer.prototype.collide = function() {
+  for (i = 0; i < window.dancers.length; i++) {
+    console.log('TOP', window.dancers[i].top);
+    console.log('THIS TOP', this.top);
+    console.log('left', window.dancers[i].left);
+    console.log('this left', this.left);
+    if (window.dancers[i].top - this.top < 20 && window.dancers[i].left - this.left < 20) {
+      if (window.dancers[i] !== this) {
+        this.$node.find('img').attr('src', 'images/star.gif-c200');  
+      }
+    }
+  }
+/* 
+if dancer.height() 
+Make dancers that interact with other dancers.
+For example, by iterating across the array window.dancers and using the Pythagorean Theorem to calculate your distance from each other dancer, you can have a dancer find its n closest neighbors and do something based on their positions.
+*/
+
 };
