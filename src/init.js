@@ -37,30 +37,77 @@ $(document).ready(function() {
     });    
   });
 
-  var clicked = false;
-
-  $('body').on('click', '.dancer', function(event) {
+  var dblClicked = false;
+  $('body').on('dblclick', '.dancer', function(event) {
     var dancer = $(this);
-
-    if (clicked) {
+    if (dblClicked) {
       $(document).unbind('mousemove');
-      clicked = false;
+      dblClicked = false;
     } else {
       $(document).bind('mousemove', function(e) {
         $.each($('.dancer'), function(index, dancer) {
           $(this).css({
-            left: e.pageX + index*100,
-            top: e.pageY + index*100
+            left: e.pageX + index * 100,
+            top: e.pageY + index * 100
           });
         });
-        // dancer.css({
-        //   left: e.pageX,
-        //   top: e.pageY
-        // });
       });
-      clicked = true;
+      dblClicked = true;
     }
   });
+
+  var clicked = false;
+  $('body').on('click', 'img', function(event) {
+    var dancer = $(this);
+    if (clicked) {
+      dancer.animate({width: '100px'}, 500);
+      clicked = false;
+      $('body').on('keydown', function(e) {
+        switch (e.which) {
+        case 37:
+          dancer.stop(); //left arrow key
+          break;
+        case 38:
+          dancer.stop(); //up arrow key
+          break;
+        case 39:
+          dancer.stop(); //right arrow key
+          break;
+        case 40:
+          dancer.stop(); //bottom arrow key
+          break;
+        }
+      });
+    } else {
+      dancer.animate({width: '200px'}, 500);
+      clicked = true;
+      $('body').on('keydown', function(e) {
+        switch (e.which) {
+        case 37:
+          dancer.stop().animate({
+            left: '-=30'
+          }, 50); //left arrow key
+          break;
+        case 38:
+          dancer.stop().animate({
+            top: '-=30'
+          }, 50); //up arrow key
+          break;
+        case 39:
+          dancer.stop().animate({
+            left: '+=30'
+          }, 50); //right arrow key
+          break;
+        case 40:
+          dancer.stop().animate({
+            top: '+=30'
+          }, 50); //bottom arrow key
+          break;
+        }
+      });
+    }
+  });
+
 
 
   $('.dropdown-content').on('click', 'a', function(event) {

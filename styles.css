@@ -28,6 +28,7 @@ body, a:link, a:visited, a:active{
 
 .gif{
   width: 100px;
+  position: absolute;
 }
 .background{
   display: block;
