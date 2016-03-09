@@ -37,6 +37,16 @@ $(document).ready(function() {
     });    
   });
 
+  $('body').on('mouseover', '.dancer', function(event) {
+    $(this).draggable();
+  });
+
+  $('body').on('mouseover', 'img', function(event) {
+    $(this).resizable();
+  });
+
+
+
   var dblClicked = false;
   $('body').on('dblclick', '.dancer', function(event) {
     var dancer = $(this);
